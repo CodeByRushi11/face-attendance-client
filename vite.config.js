@@ -1,7 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-// https://vite.dev/config/
+import path from "path";
+
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  server: {
+    fs: {
+      // Allow the project root and the public folder
+      allow: [path.resolve(__dirname), path.resolve(__dirname, "public")],
+    },
+  },
 });
